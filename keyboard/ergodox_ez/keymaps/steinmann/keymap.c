@@ -1,7 +1,7 @@
 #include "ergodox_ez.h"
 #include "debug.h"
 #include "action_layer.h"
-#include "keymap_extras/keymap_german.h"
+#include "keymap_extras/keymap_german_osx.h"
 
 // Layer names
 #define BASE 0 // default layer
@@ -9,7 +9,7 @@
 #define MDIA 2 // media keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap 0: Basic layer
+ /*Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   ^    |   1  |   2  |   3  |   4  |   5  |  /   |           |   \  |   6  |   7  |   8  |   9  |   0  |   ß    |
@@ -18,9 +18,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |  LCtrl |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   Ö  |  Ä     |
  * |--------+------+------+------+------+------| Hyper|           | Media|------+------+------+------+------+--------|
- * | LShift |   Y  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  -/  | RShift |
+ * | LShift |   Y  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |Quote | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | <>|  | LGui |   ´  |   -  |   +  |                                       | Right| Down |  Up  | Left |   L2 |
+ *   | <>|  | LGui |   `  |   -  |   +  |                                       | Right| Down |  Up  | Left |   L2 |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | Alt  | LGui |       | Alt  |   Esc|
@@ -28,27 +28,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      | Home |       | PgUp |        |      |
  *                                 | Space|Backsp|------|       |------|  Tab   |Enter |
  *                                 |      |ace   | End  |       | PgDn |        |      |
- *                                 `--------------------'       `----------------------'
+ *                                `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        DE_LESS,         KC_1,           KC_2,     KC_3,     KC_4,     KC_5,   KC_SLSH,
-        KC_DELT,         KC_Q,           KC_W,     KC_E,     KC_R,     KC_T,   KC_FN1,
-        KC_LCTRL,         KC_A,           KC_S,     KC_D,     KC_F,     KC_G,
-        KC_LSFT,         DE_Y,           KC_X,     KC_C,     KC_V,     KC_B,   ALL_T(KC_NO),
-        DE_CIRC, KC_LGUI, DE_ACUT,  DE_MINS,  DE_PLUS,
+        DE_OSX_CIRC,         DE_OSX_1,           DE_OSX_2,     DE_OSX_3,     DE_OSX_4,     DE_OSX_5,   DE_OSX_SLSH,
+        KC_DELT,         DE_OSX_Q,           DE_OSX_W,     DE_OSX_E,     DE_OSX_R,     DE_OSX_T,   KC_FN1,
+        KC_LCTRL,         DE_OSX_A,           DE_OSX_S,     DE_OSX_D,     DE_OSX_F,     DE_OSX_G,
+        KC_LSFT,         DE_OSX_Y,           DE_OSX_X,     DE_OSX_C,     DE_OSX_V,     DE_OSX_B,   ALL_T(KC_NO),
+        DE_OSX_LESS, KC_LGUI, DE_OSX_ACUT,  DE_OSX_MINS,  DE_OSX_PLUS,
                                                KC_LALT, KC_LGUI,
                                                               KC_HOME,
                                                KC_SPC,KC_BSPC,KC_END,
         // right hand
-        KC_BSLS,     KC_6,   KC_7,    KC_8,    KC_9,   KC_0,             KC_MINS,
-        KC_FN1,       DE_Z,   KC_U,    KC_I,    KC_O,   KC_P,             DE_UE,
-                     KC_H,   KC_J,    KC_K,    KC_L,   DE_OE,            DE_AE,
-        MO(2),KC_N,   KC_M,    KC_COMM, KC_DOT, DE_MINS,   KC_RSFT,
+        DE_OSX_BSLS,     DE_OSX_6,   DE_OSX_7,    DE_OSX_8,    DE_OSX_9,   DE_OSX_0,             DE_OSX_MINS,
+        KC_FN1,       DE_OSX_Z,   DE_OSX_U,    DE_OSX_I,    DE_OSX_O,   DE_OSX_P,             DE_OSX_UE,
+                     DE_OSX_H,   DE_OSX_J,    DE_OSX_K,    DE_OSX_L,   DE_OSX_OE,            DE_OSX_AE,
+        MO(2),DE_OSX_N,   DE_OSX_M,    DE_OSX_COMM, DE_OSX_DOT, DE_OSX_QUOT,   KC_RSFT,
                              KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,          TG(1),
-        DE_ALGR,KC_ESC,
+        KC_LALT,KC_ESC,
         KC_PGUP,
         KC_PGDN,KC_TAB, KC_ENT
     ),
@@ -77,19 +77,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = KEYMAP(
        // left hand
        KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-       KC_TRNS,DE_EXLM,DE_AT,  DE_LCBR,DE_RCBR,DE_PIPE,KC_TRNS,
-       KC_TRNS,DE_HASH,DE_DLR, DE_LPRN,DE_RPRN,DE_GRV,
-       KC_TRNS,DE_PERC,DE_CIRC,DE_LBRC,DE_RBRC,DE_TILD,KC_TRNS,
+       KC_TRNS,DE_OSX_EXLM,DE_OSX_AT,  DE_OSX_LCBR,DE_OSX_RCBR,DE_OSX_PIPE,KC_TRNS,
+       KC_TRNS,DE_OSX_HASH,DE_OSX_DLR, DE_OSX_LPRN,DE_OSX_RPRN,DE_OSX_GRV,
+       KC_TRNS,DE_OSX_PERC,DE_OSX_CIRC,DE_OSX_LBRC,DE_OSX_RBRC,DE_OSX_TILD,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
-       KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    DE_ASTR, KC_F12,
-                KC_DOWN, KC_4,   KC_5,    KC_6,    DE_PLUS, KC_TRNS,
-       KC_TRNS, DE_AMPR, KC_1,   KC_2,    KC_3,    DE_BSLS, KC_TRNS,
-                         KC_TRNS,KC_DOT,  KC_0,    DE_EQL,  KC_TRNS,
+       KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    DE_OSX_ASTR, KC_F12,
+                KC_DOWN, KC_4,   KC_5,    KC_6,    DE_OSX_PLUS, KC_TRNS,
+       KC_TRNS, DE_OSX_AMPR, KC_1,   KC_2,    KC_3,    DE_OSX_BSLS, KC_TRNS,
+                         KC_TRNS,KC_DOT,  KC_0,    DE_OSX_EQL,  KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
