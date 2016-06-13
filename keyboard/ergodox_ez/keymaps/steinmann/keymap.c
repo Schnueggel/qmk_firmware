@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                               KC_HOME,
                                                KC_SPC,KC_BSPC,KC_END,
         // right hand
-        DE_OSX_BSLS,     DE_OSX_6,   DE_OSX_7,    DE_OSX_8,    DE_OSX_9,   DE_OSX_0,             DE_OSX_MINS,
+        DE_OSX_BSLS,     DE_OSX_6,   DE_OSX_7,    DE_OSX_8,    DE_OSX_9,   DE_OSX_0,             DE_OSX_SS,
         KC_FN1,       DE_OSX_Z,   DE_OSX_U,    DE_OSX_I,    DE_OSX_O,   DE_OSX_P,             DE_OSX_UE,
                      DE_OSX_H,   DE_OSX_J,    DE_OSX_K,    DE_OSX_L,   DE_OSX_OE,            DE_OSX_AE,
         MO(2),DE_OSX_N,   DE_OSX_M,    DE_OSX_COMM, DE_OSX_DOT, DE_OSX_QUOT,   KC_RSFT,
